@@ -1,0 +1,197 @@
+@import "compass/css3";
+
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+li {
+  display: inline-block;
+  height: 100%;
+  width: 25%;
+  border-right: 1px solid white;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  transition: .3s width .2s, left .2s, 100ms z-index .6s;
+}
+li:nth-child(2) {
+  left: 25%;
+}
+li:nth-child(3) {
+  left: 50%;
+}
+li:nth-child(4) {
+  left: 75%;
+}
+li.active {
+  width: 100%;
+  z-index: 1;
+  transition: .3s width .2s, left .2s;
+  border-right: none;
+  left: 0;
+}
+li:before {
+  content: "Click to Expand";
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.2);
+  text-align: center;
+  padding-top: 40%;
+  color: white;
+  position: absolute;
+  top: 1;
+  left: 1;
+  transition: 200ms opacity;
+  opacity: 0;
+}
+li:hover:before {
+  opacity: 1;
+}
+li:hover.active:hover:before {
+  display: none;
+}
+
+div {
+  background: -webkit-radial-gradient(closest-corner, rgba(16, 47, 70, 0) 60%, rgba(16, 47, 70, 0.2)), -webkit-linear-gradient(108deg, #e5e9bf 10%, #00396f 90%);
+  width: 100%;
+  height: 100%;
+  transition: 1s width;
+}
+li:nth-child(2) div {
+  background: -webkit-radial-gradient(closest-corner, rgba(16, 47, 70, 0) 60%, rgba(16, 47, 70, 0.2)), -webkit-linear-gradient(108deg, #e0da81, #e0a681 10%, #0f1b58 90%);
+}
+li:nth-child(3) div {
+  background: radial-gradient(circle farthest-side at right bottom, #f8cdda, #1d2b64 80%, #0e153a);
+}
+li:nth-child(4) div {
+  background: -webkit-radial-gradient(closest-corner, rgba(16, 47, 70, 0) 60%, rgba(16, 47, 70, 0.26)), -webkit-linear-gradient(108deg, #26d0ce, #1a2980 90%);
+}
+
+span {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 3;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 7px 9px;
+  margin: 4px 9px;
+  cursor: pointer;
+  font-size: 1.5em;
+  opacity: 0;
+  transition: 200ms opacity;
+}
+.show-x span {
+  opacity: 1;
+}
+
+
+
+@import url(https://fonts.googleapis.com/css?family=Satisfy|Pathway+Gothic+One);
+/* Defaults */
+html, body, #quizzie {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+* {
+    box-sizing: border-box;
+}
+body {
+  background: #677c8a;
+  color: #fff;
+}
+h1 {
+  font-family: 'Satisfy', 'cursive';
+  font-size: 2.5em;
+}
+h2,p {
+  font-family: 'Pathway Gothic One', 'sans-serif';
+  font-size: 2em;
+}
+h1,h2,p {
+    text-align: center;
+    display: block;
+    width: auto;
+    margin: 1%;
+}
+#quizzie {
+  padding: 5% 0;
+  /* Individual Steps/Sections */
+  ul {
+      list-style: none;
+      display: block;
+      width: auto;
+      margin: 2% 2%;
+      padding: 2%;
+      overflow: auto;
+      display:none;
+    &.current {
+      display: block;
+    }
+
+    /* Step Questions and Answer Options */
+    li {
+        display: inline-block;
+        float: left;
+        width: 49%;
+        margin-right: 2%;
+        overflow: auto;
+        text-align: center;
+      &.quiz-answer {
+          cursor: pointer;
+      }
+      &.question {
+          display: block;
+          float: none;
+          width: 100%;
+          text-align: center;
+          margin: 0;
+          margin-bottom: 2%;
+      }
+      &.results-inner {
+          @extend .question;
+          padding: 5% 2%;
+          img {
+              width: 250px;
+          }
+      }
+    }
+    li:last-child {
+        margin-right: 0;
+    }
+  }
+
+  /* Content */
+  .question-wrap {
+      display: block;
+      padding: 1%;
+      margin: 1em 10%;
+      @include border-radius(10px);
+  }
+  .answer-wrap {
+      @extend .question-wrap;
+      background: Turquoise;
+      @include transition(background-color 0.5s ease);
+      &:hover {
+        background: DarkTurquoise;
+      }
+  }
+}
